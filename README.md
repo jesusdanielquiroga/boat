@@ -1,6 +1,9 @@
 # Boat App
 
 ### Proyecto creación de una aplicación web para gestionar el alquiler de barcos. 
+
+![](https://github.com/Jquiroga-Abyago/boat/blob/f97e4dc8a6a6214e6cd739a932a4812eab310541/imagenes/boats_model.png)
+
 <p>Una importante compañía que fabrica y alquila barcos ha decidido ofrecer sus servicios por medio
 de internet; se han dado cuenta que a través de una aplicación web los clientes (nuevos y
 actuales) pueden realizar todos los procesos que antes hacían y que implicaba una carga
