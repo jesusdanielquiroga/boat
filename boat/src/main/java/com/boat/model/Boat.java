@@ -47,7 +47,7 @@ public class Boat {
     private List<Reservation> reservations;
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy= "boat")
-    @JsonIgnoreProperties({"boat", "client")
+    @JsonIgnoreProperties({"boat", "client"})
     private List<Message> messages;
     
     private String name;
