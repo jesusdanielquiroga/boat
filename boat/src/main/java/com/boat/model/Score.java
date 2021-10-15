@@ -6,13 +6,8 @@
 package com.boat.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.io.Serializable;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,10 +17,11 @@ import lombok.NoArgsConstructor;
  * @author jquiroga
  */
 @Entity
+@Table(name = "score")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Score {
+public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
@@ -35,8 +31,7 @@ public class Score {
     private Integer stars;
     
         
-    @ManyToOne
-    @JoinColumn(name = "IdReservation")  
+    @OneToOne
     @JsonIgnoreProperties("score")
     private Reservation reservation; 
 

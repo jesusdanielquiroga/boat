@@ -6,13 +6,8 @@
 package com.boat.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.io.Serializable;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,10 +17,11 @@ import lombok.NoArgsConstructor;
  * @author jquiroga
  */
 @Entity
+@Table(name = "message")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Message {
+public class Message  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
@@ -33,13 +29,13 @@ public class Message {
     private String messageText;
     
     @ManyToOne
-    @JoinColumn(name = "Id")  
-    @JsonIgnoreProperties("messages")
+    @JoinColumn(name = "boatId")  
+    @JsonIgnoreProperties({"messages","reservations"})
     private Boat boat;
     
     @ManyToOne
-    @JoinColumn(name = "IdClient")  
-    @JsonIgnoreProperties("messages")
+    @JoinColumn(name = "clientId")  
+    @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
     
     

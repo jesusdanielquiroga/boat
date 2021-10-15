@@ -6,11 +6,8 @@
 package com.boat.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.io.Serializable;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,10 +17,11 @@ import lombok.NoArgsConstructor;
  * @author jquiroga
  */
 @Entity
+@Table(name = "admin")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+public class Admin implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAdmin;

@@ -6,17 +6,9 @@
 package com.boat.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,10 +19,11 @@ import lombok.NoArgsConstructor;
  * @author jquiroga
  */
 @Entity
+@Table(name = "reservation")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation {
+public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
@@ -42,17 +35,17 @@ public class Reservation {
     private String status = "Created"; 
     
     @ManyToOne
-    @JoinColumn(name = "Id")  
+    @JoinColumn(name = "boatId")  
     @JsonIgnoreProperties("reservations")
     private Boat boat;
     
     @ManyToOne
-    @JoinColumn(name = "IdClient")  
-    @JsonIgnoreProperties("reservations")
+    @JoinColumn(name = "clientId")  
+    @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
 
                 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy= "reservation")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy= "reservation")
     @JsonIgnoreProperties("reservation")
     private List<Score> score;
 
