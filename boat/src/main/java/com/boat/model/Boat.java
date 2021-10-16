@@ -27,10 +27,13 @@ public class Boat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     @Column(nullable = false, length = 45)
     private String brand;
     @Column(nullable = false)
     private Integer year;
+    @Column(nullable = false, length = 250)
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
@@ -38,15 +41,11 @@ public class Boat implements Serializable {
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "boat")
-    @JsonIgnoreProperties({"boat", "messages"})
-    private List<Reservation> reservations;
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "boat")
     @JsonIgnoreProperties({"boat", "client"})
     private List<Message> messages;
 
-    private String name;
-    @Column(nullable = false, length = 250)
-    private String description;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "boat")
+    @JsonIgnoreProperties({"boat", "messages"})
+    private List<Reservation> reservations;
 
 }

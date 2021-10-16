@@ -23,25 +23,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Client implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
     @Column(nullable = false, length = 45)
     private String email;
     @Column(nullable = false, length = 45)
-    private String password;  
+    private String password;
     @Column(nullable = false, length = 250)
     private String name;
     @Column(nullable = false)
     private Integer age;
 
-    
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy= "client")
-    @JsonIgnoreProperties("client")
-    private List<Reservation> reservations;
-    
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy= "client")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
     private List<Message> messages;
-    
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    private List<Reservation> reservations;
+
 }

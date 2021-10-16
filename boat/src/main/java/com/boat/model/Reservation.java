@@ -13,7 +13,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 /**
  *
  * @author jquiroga
@@ -24,29 +23,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reservation implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     @Column(nullable = false)
-    private Date devolutionDate;
-    @Column(nullable = false)
     private Date startDate;
+    @Column(nullable = false)
+    private Date devolutionDate;
+
     @Column(nullable = false, length = 255)
-    private String status = "Created"; 
-    
+    private String status = "created";
+
     @ManyToOne
-    @JoinColumn(name = "boatId")  
+    @JoinColumn(name = "boatId")
     @JsonIgnoreProperties("reservations")
     private Boat boat;
-    
+
     @ManyToOne
-    @JoinColumn(name = "clientId")  
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
-                
-    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy= "reservation")
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "reservation")
     @JsonIgnoreProperties("reservation")
-    private List<Score> score;
+    private Score score;
 
 }
