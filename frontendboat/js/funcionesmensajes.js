@@ -9,28 +9,36 @@ function validaesVacio(dato){
  */
 function validar(){
     //obtiene valores
-    let id = $("#id").val();
     let messagetext = $("#messagetext").val();
+    let client = $("#client").val();
+    let boat = $("#boat").val();
     let errores="";
     $("#mensajes").html("");
 
     //valida que los campos no sean vacios
-    if( validaesVacio(id)) {
-        errores="id vacio<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#id").focus();
-        return false;
-    }else if( validaesVacio(messagetext)) {
+    if( validaesVacio(messagetext)) {
         errores="messagetext vacio<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
-        $("#name").focus();
+        $("#messagetext").focus();
+        return false;
+    }else if( validaesVacio(client)) { 
+        errores="client vacio<br>";
+        $("#mensajes").html(errores);
+        $("#mensajes").show(500);
+        $("#client").focus();
+        return false;
+    }else if( validaesVacio(boat)) { 
+        errores="boat vacio<br>";
+        $("#mensajes").html(errores);
+        $("#mensajes").show(500);
+        $("#boat").focus();
         return false;
     }else{
         $("#mensajes").html("");
         $("#mensajes").hide(500);
         return true;
+
     }
 
     return true;

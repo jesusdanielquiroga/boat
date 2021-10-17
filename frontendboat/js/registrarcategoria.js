@@ -34,8 +34,8 @@ function registrar() {
             success: function (respuesta) {
                 //escribe en la consola del desarrollador para efectos de depuración
                 console.log(respuesta);
-                $("#mensajes").show(1000);
-                $("#mensajes").html("Registro ingresado...");
+                $("#mensajes").show(1500);
+                $("#mensajes").html("Record saved...");
                 $("#mensajes").hide(1000);
                 listar();
                 estadoInicial();
@@ -46,7 +46,7 @@ function registrar() {
             // el objeto de la petición en crudo y código de estatus de la petición
             error: function (xhr, status) {
                 $("#mensajes").show(1000);
-                $("#mensajes").html("Error peticion POST..." + status );
+                $("#mensajes").html("Request error POST..." + status );
                 //$("#mensajes").hide(1000);
             }
         });

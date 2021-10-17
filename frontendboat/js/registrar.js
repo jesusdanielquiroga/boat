@@ -38,7 +38,7 @@ function registrar() {
                 //escribe en la consola del desarrollador para efectos de depuración
                 console.log(respuesta);
                 $("#mensajes").show(1000);
-                $("#mensajes").html("Registro ingresado...");
+                $("#mensajes").html("Record saved...");
                 $("#mensajes").hide(1000);
                 listar();
                 estadoInicial();
@@ -49,7 +49,7 @@ function registrar() {
             // el objeto de la petición en crudo y código de estatus de la petición
             error: function (xhr, status) {
                 $("#mensajes").show(1000);
-                $("#mensajes").html("Error peticion POST..." + status );
+                $("#mensajes").html("Request error POST..." + status );
                 //$("#mensajes").hide(1000);
             }
         });
@@ -98,13 +98,13 @@ function listarCategorias() {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            $("#mensajes").html("Ocurrio un problema al ejecutar la petición..." + status);
+            $("#mensajes").html("Problem executing the request ..." + status);
             //$("#mensajes").hide(1000);
         },
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de bicis...");
+            $("#mensajes").html("Loading boat list ...");
             $("#mensajes").hide(1000);
         }
     });
@@ -115,7 +115,7 @@ function armaListaCategorias(items) {
     $("#listado").show(500);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
     //encabezados o títulos de la tabla
-    var lista = ` <option value="">--Selecciona una Categoría--</option>`;
+    var lista = ` <option value="">--Select a category--</option>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {

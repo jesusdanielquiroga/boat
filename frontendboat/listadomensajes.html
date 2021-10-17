@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de ...</title>
+    <title>Message List</title>
     <!--
     <script src="js/jquery-3.6.0.min.js"></script>
     -->
@@ -17,7 +17,7 @@
 
 <body>
     <div>
-        <h1>Mensajes Disponibles</h1>
+        <h1>Registered Messages</h1>
 
         <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
              o resultado de ejecutar la peticion
@@ -26,31 +26,31 @@
         <br>
         <a href="index.html"><img src="img/back.png" alt="Regresar"></a>
         
-        <button id="nuevoRegistro" onclick="activaNuevo();">Registrar Mensaje</button>
+        <button id="nuevoRegistro" onclick="activaNuevo();">Register Message</button>
         <!--aqui se actualizara el listado -->
         <div id="listado"></div>
 
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
-            <h3>Registrar Mensaje</h3>
-            <input type="number" id="id" placeholder="id">
+            <h3>Register Message</h3>
             <br>
             <textarea id="messagetext" placeholder="messagetext" rows="4" cols="50"></textarea>
             <br>
-            <button onclick="registrar();">Guardar</button>
-            <button onclick="estadoInicial();">Cancelar</button>
+            <select name="client" id="client" placeholder="client_id"></select>
+            <select name="boat" id="boat" placeholder="boat_id"></select>   
+            <button onclick="registrar();">Save</button>
+            <button onclick="estadoInicial();">Cancel</button>
         </div>
 
 
         <!-- Seccion para editar registros-->
         <div id="editar">
-            <h3>Editar Mensaje</h3>
-            <input type="number" id="idEdit" placeholder="id">
+            <h3>Edit Message</h3>
             <br>
             <textarea id="messagetextEdit" placeholder="messagetext" rows="4" cols="50"></textarea>
             <br>
-            <button onclick="actualizar();">Guardar</button>
-            <button onclick="estadoInicial();">Cancelar</button>
+            <button onclick="actualizar();">Save</button>
+            <button onclick="estadoInicial();">Cancel</button>
         </div>
         
     </div>

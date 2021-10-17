@@ -40,13 +40,13 @@ function listar() {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            $("#mensajes").html("Ocurrio un problema al ejecutar la petición..." + status);
+            $("#mensajes").html("Problem executing the request..." + status);
             //$("#mensajes").hide(1000);
         },
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de clientes");
+            $("#mensajes").html("Loading client list");
             $("#mensajes").hide(1000);
         }
     });
@@ -66,10 +66,10 @@ function listarRespuesta(items) {
     //encabezados o títulos de la tabla
     var tabla = `<table border="1">
                   <tr>
-                    <th>Nombre</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>Edad</th>
-                    <th colspan="2">Acciones</th>
+                    <th>Age</th>
+                    <th colspan="2">Actions</th>
                   </tr>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
@@ -78,8 +78,8 @@ function listarRespuesta(items) {
                    <td>${items[i].name}</td>
                    <td>${items[i].email}</td>
                    <td>${items[i].age}</td>
-                   <td><button onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button onclick="mostrarmensaje()">Borrar</button></td>
+                   <td><button onclick="mostrarmensaje()">Edit</button></td>
+                   <td><button onclick="mostrarmensaje()">Delete</button></td>
                    </tr>`;
     }
 
@@ -105,5 +105,5 @@ function estadoInicial(){
     $("#name").val("")
 }
 function mostrarmensaje(){
-    alert("Opción no impplementada hasta el reto 4...")
+    alert("We're sorry. This function is under development ...")
 }

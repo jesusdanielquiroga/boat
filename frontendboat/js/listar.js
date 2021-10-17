@@ -38,14 +38,14 @@ function listar() {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            $("#mensajes").html("Ocurrio un problema al ejecutar la petición..." + status);
+            $("#mensajes").html("Problem executing the request ..." + status);
             //$("#mensajes").hide(1000);
         },
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de botes...");
-            $("#mensajes").hide(1000);
+            $("#mensajes").html("Loading boat list ...");
+            $("#mensajes").hide(1500);
         }
     });
 }
@@ -67,12 +67,12 @@ function listarRespuesta(items) {
     //encabezados o títulos de la tabla
     var tabla = `<table border="1">
                   <tr>
-                    <th>Categoria</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Año</th>
-                    <th>Descripción</th>
-                    <th colspan="2">Acciones</th>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Year</th>
+                    <th>Description</th>
+                    <th colspan="2">Actions</th>
                   </tr>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
@@ -83,8 +83,8 @@ function listarRespuesta(items) {
                    <td>${items[i].brand}</td>
                    <td>${items[i].year}</td>
                    <td>${items[i].description}</td>
-                   <td><button onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button onclick="mostrarmensaje()">Borrar</button></td>
+                   <td><button onclick="mostrarmensaje()">Edit</button></td>
+                   <td><button onclick="mostrarmensaje()">Delete</button></td>
                    </tr>`;
     }
 
@@ -112,5 +112,5 @@ function estadoInicial(){
     listar();
 }
 function mostrarmensaje(){
-    alert("Opción no impplementada hasta el reto 4...")
+    alert("We're sorry. This function is under development ...")
 }
