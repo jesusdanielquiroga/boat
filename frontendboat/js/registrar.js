@@ -17,8 +17,8 @@ function registrar() {
     if (validar()){
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost:8081/api/Boat/save",
-            
+            //url: "http://localhost:8081/api/Boat/save",
+            url:"http://150.230.32.98:8081/api/Boat/save",
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
             //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -71,7 +71,8 @@ function activaNuevo(){
 function listarCategorias() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/Category/all",
+        //url: "http://localhost:8081/api/Category/all",
+        url:"http://150.230.32.98:8081/api/Category/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)

@@ -7,8 +7,7 @@ function registrar() {
         name: $("#name").val(),
         email: $("#email").val(),
         password: $("#password").val(),
-        age: $("#age").val()
-        
+                
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -17,8 +16,8 @@ function registrar() {
     if (validar()){
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            //url: "http://localhost:8081/api/Client/save",
-            url:"http://150.230.32.98:8081/api/Client/save",
+            //url: "http://localhost:8081/api/Admin/save",
+            url:"http://150.230.32.98:8081/api/Admin/save",
             
             // la información a enviar
             // (también es posible utilizar una cadena de datos)

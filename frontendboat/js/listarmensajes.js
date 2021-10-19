@@ -13,7 +13,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/Message/all",
+        //url: "http://localhost:8081/api/Message/all",
+        url:"http://150.230.32.98:8081/api/Message/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -46,7 +47,7 @@ function listar() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Loading client list...");
+            $("#mensajes").html("Loading message list...");
             $("#mensajes").hide(1000);
         }
     });

@@ -4,6 +4,8 @@
 $(document).ready(function () {
     //configura el aspecto inicial de la pagina
     estadoInicial();
+    //ejecuta función para enviar petición al ws
+    listar();
 });
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
@@ -11,8 +13,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Boat/all",
-        url:"http://150.230.32.98:8081/api/Boat/all",
+        //url: "http://localhost:8081/api/Reservation/all",
+        url:"http://150.230.32.98:8081/api/Reservation/all", 
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -39,14 +41,14 @@ function listar() {
         // son pasados como argumentos a la función
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
-            $("#mensajes").html("Problem executing the request ..." + status);
+            $("#mensajes").html("Problem executing the request..." + status);
             //$("#mensajes").hide(1000);
         },
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Loading boat list ...");
-            $("#mensajes").hide(1500);
+            $("#mensajes").html("Loading reservation list...");
+            $("#mensajes").hide(1000);
         }
     });
 }
@@ -59,31 +61,26 @@ function listar() {
     
 */
 function listarRespuesta(items) {
-    var json = JSON.stringify(items);
-
-    
     $("#listado").html("");
     $("#listado").show(500);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
     //encabezados o títulos de la tabla
     var tabla = `<table border="1">
                   <tr>
-                    <th>Category</th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Year</th>
-                    <th>Description</th>
+                    <th>StartDate</th>
+                    <th>DevolutionDate</th>
+                    <th>Client</th>
+                    <th>Boat</th>                  
                     <th colspan="2">Actions</th>
                   </tr>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-                   <td>${items[i].category.name}</td>
-                   <td>${items[i].name}</td>
-                   <td>${items[i].brand}</td>
-                   <td>${items[i].year}</td>
-                   <td>${items[i].description}</td>
+                   <td>${items[i].startDate}</td>
+                   <td>${items[i].devolutionDate}</td>
+                   <td>${items[i].client.name}</td>
+                   <td>${items[i].boat.name}</td>
                    <td><button onclick="mostrarmensaje()">Edit</button></td>
                    <td><button onclick="mostrarmensaje()">Delete</button></td>
                    </tr>`;
@@ -104,13 +101,8 @@ function estadoInicial(){
     $("#nuevoRegistro").show(500)
 
     //limpia el contenido de los campos del formulario nuevo
-    $("#brand").val(""),
-    $("#year").val(""),
-    $("#category").val(""),
-    $("#name").val("")
-    
-    //ejecuta función para enviar petición al ws
-    listar();
+    $("#startdate").val(""),
+    $("#devolutiondate").val("")
 }
 function mostrarmensaje(){
     alert("We're sorry. This function is under development ...")
