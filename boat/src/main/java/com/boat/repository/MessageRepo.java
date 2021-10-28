@@ -17,18 +17,24 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class MessageRepo {
+
     @Autowired
     private MessageRepository crud;
-    
-    public List<Message> getAll(){
+
+    public List<Message> getAll() {
         return (List<Message>) crud.findAll();
     }
-    public Optional <Message> getMessage(int idMessage){
+
+    public Optional<Message> getMessage(int idMessage) {
         return crud.findById(idMessage);
     }
-    public Message save(Message messages){
+
+    public Message save(Message messages) {
         return crud.save(messages);
     }
 
-    
+    public void delete(Message message) {
+        crud.delete(message);
+    }
+
 }

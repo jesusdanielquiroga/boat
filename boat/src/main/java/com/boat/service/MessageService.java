@@ -5,7 +5,6 @@
  */
 package com.boat.service;
 
-
 import com.boat.model.Message;
 import com.boat.repository.MessageRepo;
 import java.util.List;
@@ -17,31 +16,61 @@ import org.springframework.stereotype.Service;
  *
  * @author jquiroga
  */
-
 @Service
 public class MessageService {
+
     @Autowired
     private MessageRepo messageRepository;
-    
-    public List<Message> getAll(){
+
+    public List<Message> getAll() {
         return (List<Message>) messageRepository.getAll();
     }
-    public Optional <Message> getMessage(int idMessage){
+
+    public Optional<Message> getMessage(int idMessage) {
         return messageRepository.getMessage(idMessage);
     }
-    public Message save(Message messages){
-        if(messages.getIdMessage()==null){
+
+    public Message save(Message messages) {
+        if (messages.getIdMessage() == null) {
             return messageRepository.save(messages);
-        }
-        else{
-            Optional<Message> evt=messageRepository.getMessage(messages.getIdMessage());
-            if(evt.isEmpty()){
+        } else {
+            Optional<Message> evt = messageRepository.getMessage(messages.getIdMessage());
+            if (evt.isEmpty()) {
                 return messageRepository.save(messages);
-            }
-            else{
+            } else {
                 return messages;
             }
         }
+    }
+
+    public boolean deleteMessage(int id) {
+        Optional<Message> message = messageRepository.getMessage(id);
+        if (message.isEmpty()) {
+            return false;
+        } else {
+            messageRepository.delete(message.get());
+            return true;
         }
-    
+    }
+
+    /*
+        {"idMessage":1,"messageText":"Me gusta."}
+     */
+    public Message updateMessage(Message message) {
+        if (message.getIdMessage() != null) {
+            Optional<Message> mensaje = messageRepository.getMessage(message.getIdMessage());
+
+            if (!mensaje.isEmpty()) {
+                if (message.getMessageText() != null) {
+                    mensaje.get().setMessageText(message.getMessageText());
+                }
+
+                return messageRepository.save(mensaje.get());
+            } else {
+                return message;
+            }
+        }
+        return message;
+    }
+
 }

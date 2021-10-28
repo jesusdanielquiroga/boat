@@ -21,23 +21,38 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/Client")
-@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ClientController {
+
     @Autowired
     private ClientService clientService;
-    
+
     @GetMapping("/all")
     public List<Client> getClients() {
         return clientService.getAll();
     }
+
     @GetMapping("/{id}")
     public Optional<Client> getClient(@PathVariable("id") int idClient) {
         return clientService.getClient(idClient);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client  clients) {
+    public Client save(@RequestBody Client clients) {
         return clientService.save(clients);
-    }    
-    
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteClient(@PathVariable int id) {
+        return clientService.deleteClient(id);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client updateClient(@RequestBody Client client) {
+        return clientService.updateClient(client);
+    }
+
 }

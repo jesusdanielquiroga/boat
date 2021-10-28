@@ -43,4 +43,38 @@ public class BoatService {
         }
     }
 
+    public boolean deleteBoat(int id) {
+        Optional<Boat> boat = boatRepository.getBoat(id);
+        if (boat.isEmpty()) {
+            return false;
+        } else {
+            boatRepository.delete(boat.get());
+            return true;
+        }
+    }
+    public Boat updateBoat(Boat boat){
+        if (boat.getId()!=null){
+            Optional<Boat> bote = boatRepository.getBoat(boat.getId());
+            
+            if (!bote.isEmpty()){
+               if (boat.getName()!=null){
+                   bote.get().setName(boat.getName());
+               }
+               if (boat.getDescription()!=null){
+                   bote.get().setDescription(boat.getDescription());
+               }
+               if (boat.getBrand()!=null){
+                   bote.get().setBrand(boat.getBrand());
+               }
+               if (boat.getYear()!=null){
+                   bote.get().setYear(boat.getYear());
+               }
+               return boatRepository.save(bote.get());
+            }else{
+               return boat;
+            }
+        }
+        return boat;     
+    }
+
 }
