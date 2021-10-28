@@ -5,7 +5,6 @@
  */
 package com.boat.repository;
 
-
 import com.boat.model.Reservation;
 import java.util.List;
 import java.util.Optional;
@@ -18,18 +17,24 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class ReservationRepo {
+
     @Autowired
     private ReservationRepository crud;
-    
-    public List<Reservation> getAll(){
+
+    public List<Reservation> getAll() {
         return (List<Reservation>) crud.findAll();
     }
-    public Optional <Reservation> getReservation(int idReservation){
+
+    public Optional<Reservation> getReservation(int idReservation) {
         return crud.findById(idReservation);
     }
-    public Reservation save(Reservation reservations){
+
+    public Reservation save(Reservation reservations) {
         return crud.save(reservations);
     }
 
-    
+    public void delete(Reservation reservation) {
+        crud.delete(reservation);
+    }
+
 }

@@ -29,6 +29,8 @@ public class CategoryRepo {
     public Category save(Category categorys){
         return crud.save(categorys);
     }
-
+    public void delete(Category category){
+        crud.delete(category);
+    }
     
 }

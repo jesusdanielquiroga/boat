@@ -21,23 +21,38 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/Boat")
-@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class BoatController {
+
     @Autowired
     private BoatService boatService;
-    
+
     @GetMapping("/all")
     public List<Boat> getBoats() {
         return boatService.getAll();
     }
+
     @GetMapping("/{id}")
     public Optional<Boat> getBoat(@PathVariable("id") int id) {
         return boatService.getBoat(id);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Boat save(@RequestBody Boat boats) {
         return boatService.save(boats);
-    }    
-    
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteBoat(@PathVariable int id) {
+        return boatService.deleteBoat(id);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Boat updateBoat(@RequestBody Boat boat) {
+        return boatService.updateBoat(boat);
+    }
+
 }

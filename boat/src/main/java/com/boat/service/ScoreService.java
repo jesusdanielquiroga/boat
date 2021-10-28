@@ -16,31 +16,50 @@ import org.springframework.stereotype.Service;
  *
  * @author jquiroga
  */
-
 @Service
 public class ScoreService {
+
     @Autowired
     private ScoreRepo scoreRepository;
-    
-    public List<Score> getAll(){
+
+    public List<Score> getAll() {
         return (List<Score>) scoreRepository.getAll();
     }
-    public Optional <Score> getScore(int idScore){
+
+    public Optional<Score> getScore(int idScore) {
         return scoreRepository.getScore(idScore);
     }
-    public Score save(Score scores){
-        if(scores.getIdScore()==null){
+
+    public Score save(Score scores) {
+        if (scores.getIdScore() == null) {
             return scoreRepository.save(scores);
-        }
-        else{
-            Optional<Score> evt=scoreRepository.getScore(scores.getIdScore());
-            if(evt.isEmpty()){
+        } else {
+            Optional<Score> evt = scoreRepository.getScore(scores.getIdScore());
+            if (evt.isEmpty()) {
                 return scoreRepository.save(scores);
-            }
-            else{
+            } else {
                 return scores;
             }
         }
+    }
+
+    public Score update(Score score) {
+        if (score.getIdScore() != null) {
+            Optional<Score> puntaje = scoreRepository.getScore(score.getIdScore());
+            if (!puntaje.isEmpty()) {
+                if (score.getMessage_text()!= null) {
+                    puntaje.get().setMessage_text(score.getMessage_text());
+                }
+                if (score.getStars() != null && score.getStars() >= 0 && score.getStars() <= 5) {
+                    puntaje.get().setStars(score.getStars());
+                }
+                scoreRepository.save(puntaje.get());
+                return puntaje.get();
+            } else {
+                return score;
+            }
+        } else {
+            return score;
         }
-    
+    }
 }
