@@ -13,8 +13,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Client/all",
-        url:"http://150.230.32.98:8081/api/Client/all",
+        url: "http://localhost:8081/api/Client/all",
+        //url:"http://150.230.32.98:8081/api/Client/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -75,13 +75,15 @@ function listarRespuesta(items) {
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
+        var texto = `Name: ${items[i].name}</br>Email: ${items[i].email}</br>Age: ${items[i].age}`;
         tabla +=`<tr>
                    <td>${items[i].name}</td>
                    <td>${items[i].email}</td>
                    <td>${items[i].age}</td>
                    <td><button onclick="mostrarmensaje()">Edit</button></td>
-                   <td><button onclick="mostrarmensaje()">Delete</button></td>
+                   <td><button onclick="mostrarEliminar(${items[i].idClient},'${texto}')">Delete</button></td>
                    </tr>`;
+        texto="";           
     }
 
     //cierra tabla agregando el tag adecuado
@@ -97,13 +99,13 @@ function estadoInicial(){
     $("#editar").hide();
     $("#listado").show(500);
     $("#nuevoRegistro").show(500)
+    $("#eliminar").hide();
+    $("#idDelete").hide();
 
     //limpia el contenido de los campos del formulario nuevo
     $("#id").val(""),
-    $("#brand").val(""),
-    $("#model").val(""),
-    $("#category").val(""),
-    $("#name").val("")
+    $("#messagetext").val("")
+    listar();
 }
 function mostrarmensaje(){
     alert("We're sorry. This function is under development ...")

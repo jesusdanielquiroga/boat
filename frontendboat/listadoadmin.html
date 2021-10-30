@@ -12,6 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/listaradmin.js"></script>
     <script src="js/registraradmin.js"></script>
+    <script src="js/borraradmin.js"></script>
+    <script src="js/editaradmin.js"></script>
     <script src="js/funcionesadmin.js"></script>
 </head>
 
@@ -33,13 +35,21 @@
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
             <h3>Register Admin</h3>
-            <input type="text" id="name" placeholder="name">
+            <input type="text" id="name" placeholder="name" onkeydown="upperCaseF(this)">
             <input type="email" id="email" placeholder="email">
             <input type="password" id="password" placeholder="password"> 
             <button onclick="registrar();">Save</button>
             <button onclick="estadoInicial();">Cancel</button>
         </div>
-
+        <!-- Seccion para confirmar eliminaciòn de registros-->
+        <div id="eliminar">
+            <h3 id="titleIdDelete"></h3>
+            <input type="number" id="idDelete" placeholder="id">
+            <p id="adminDelete"></p>
+            <br>
+            <button onclick="borrarRegistro(idDelete.value);">Aceptar</button>
+            <button onclick="estadoInicial();">Cancelar</button>
+        </div>
 
         <!-- Seccion para editar registros-->
         <div id="editar">

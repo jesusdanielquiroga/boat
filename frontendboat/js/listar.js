@@ -11,8 +11,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Boat/all",
-        url:"http://150.230.32.98:8081/api/Boat/all",
+        url: "http://localhost:8081/api/Boat/all",
+        //url:"http://150.230.32.98:8081/api/Boat/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -78,6 +78,7 @@ function listarRespuesta(items) {
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
+        var texto = `Category: ${items[i].category.name}</br>Bote: ${items[i].name}</br>Brand: ${items[i].brand}</br>Year: ${items[i].year}</br>Description: ${items[i].description}`;
         tabla +=`<tr>
                    <td>${items[i].category.name}</td>
                    <td>${items[i].name}</td>
@@ -85,8 +86,9 @@ function listarRespuesta(items) {
                    <td>${items[i].year}</td>
                    <td>${items[i].description}</td>
                    <td><button onclick="mostrarmensaje()">Edit</button></td>
-                   <td><button onclick="mostrarmensaje()">Delete</button></td>
+                   <td><button onclick="mostrarEliminar(${items[i].id},'${texto}')">Delete</button></td>
                    </tr>`;
+        texto="";           
     }
 
     //cierra tabla agregando el tag adecuado
@@ -102,6 +104,8 @@ function estadoInicial(){
     $("#editar").hide();
     $("#listado").show(500);
     $("#nuevoRegistro").show(500)
+    $("#eliminar").hide();
+    $("#idDelete").hide();
 
     //limpia el contenido de los campos del formulario nuevo
     $("#brand").val(""),

@@ -12,6 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/listarmensajes.js"></script>
     <script src="js/registrarmensajes.js"></script>
+    <script src="js/borrarmensajes.js"></script>
+    <script src="js/editarmensajes.js"></script>
     <script src="js/funcionesmensajes.js"></script>
 </head>
 
@@ -40,6 +42,15 @@
             <select name="boat" id="boat" placeholder="boat_id"></select>   
             <button onclick="registrar();">Save</button>
             <button onclick="estadoInicial();">Cancel</button>
+        </div>
+         <!-- Seccion para confirmar eliminaciòn de registros-->
+        <div id="eliminar">
+            <h3 id="titleIdDelete"></h3>
+            <input type="number" id="idDelete" placeholder="id">
+            <p id="messageDelete"></p>
+            <br>
+            <button onclick="borrarRegistro(idDelete.value);">Aceptar</button>
+            <button onclick="estadoInicial();">Cancelar</button>
         </div>
 
 

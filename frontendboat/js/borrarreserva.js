@@ -1,11 +1,11 @@
-function mostrarEliminar(idClient,infClient){
+function mostrarEliminar(idReserva,infReserva){
     $("#nuevo").hide();
     $("#editar").hide();
     $("#listado").hide();
     $("#nuevoRegistro").hide();
-    $("#titleIdDelete").html("Desea eliminar el cliente con el id: " + idClient + " ?...");    
-    $("#idDelete").val(idClient);
-    $("#clientDelete").html(infClient);
+    $("#titleIdDelete").html("Desea eliminar la reserva con el id: " + idReserva + " ?...");    
+    $("#idDelete").val(idReserva);
+    $("#reservationDelete").html(infReserva);
     $("#eliminar").show(1000);
 }
 
@@ -15,9 +15,10 @@ function mostrarEliminar(idClient,infClient){
     de la petición registro a eliminar. El tipo de petición es DELETE
 */
 function borrarRegistro(llaveRegistro) {
+
     //crea un objeto javascript
-    let datos={
-        idClient: llaveRegistro
+    let datos = {
+        idReservation: llaveRegistro
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -25,17 +26,17 @@ function borrarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/Client/" + llaveRegistro,
+        url: "http://localhost:8081/api/Reservation/" + llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
-        data : datosPeticion,
+        data: datosPeticion,
 
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'DELETE',
 
-        contentType:"application/JSON",
+        contentType: "application/JSON",
 
         // el tipo de información que se espera de respuesta
         dataType: 'json',

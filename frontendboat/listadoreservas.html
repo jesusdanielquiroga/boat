@@ -12,6 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/listarreservas.js"></script>
     <script src="js/registrarreservas.js"></script>
+    <script src="js/borrarreserva.js"></script>
+    <script src="js/editarreserva.js"></script>
     <script src="js/funcionesreservas.js"></script>
 </head>
 
@@ -33,22 +35,44 @@
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
             <h3>Register Reservation</h3>
-            <input type="date" id="startdate" placeholder="startdate">
-            <input type="date" id="devolutiondate" placeholder="devolutiondate">
-            <select name="client" id="client" placeholder="client_id"></select>
-            <select name="boat" id="boat" placeholder="boat_id"></select> 
+            <input type="date" data-date-format="YYYY-MM-DD" id="startDate" placeholder="YYYY-MM-DD">
+            <br><br>
+            <input type="date" data-date-format="YYYY-MM-DD" id="devolutionDate" placeholder="YYYY-MM-DD">
+            <br><br>
+            <select id="client" placeholder="Cliente">
+            </select>
+            <br><br>
+            <select id="boat" placeholder="Bote">  
+            </select>
+            <br><br>   
             <button onclick="registrar();">Save</button>
             <button onclick="estadoInicial();">Cancel</button>
         </div>
-
-
+         <!-- Seccion para confirmar eliminaciòn de registros-->
+        <div id="eliminar">
+            <h3 id="titleIdDelete"></h3>
+            <input type="number" id="idDelete" placeholder="id">
+            <p id="reservationDelete"></p>
+            <br>
+            <button onclick="borrarRegistro(idDelete.value);">Aceptar</button>
+            <button onclick="estadoInicial();">Cancelar</button>
+        </div>
+        
         <!-- Seccion para editar registros-->
         <div id="editar">
             <h3>Edit Reservation</h3>
             <input type="number" id="idEdit" placeholder="id">
-            <input type="text" id="nameEdit" placeholder="name">
-            <input type="text" id="emailEdit" placeholder="email">
-            <input type="number" id="ageEdit" placeholder="age">
+            <input type="date" data-date-format="YYYY-MM-DD" id="startDateEdit" placeholder="YYYY-MM-DD">
+            <br><br>
+            <input type="date" data-date-format="YYYY-MM-DD" id="devolutionDateEdit" placeholder="YYYY-MM-DD">
+            <br><br>
+            <select id="clientEdit" placeholder="Cliente">
+                
+            </select>
+            <br><br>
+            <select id="boatEdit" placeholder="Bote">   
+            </select>
+            <br><br>
             <button onclick="actualizar();">Save</button>
             <button onclick="estadoInicial();">Cancel</button>
         </div>

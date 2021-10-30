@@ -6,6 +6,8 @@
 package com.boat.controller;
 
 import com.boat.model.Reservation;
+import com.boat.model.custom.CountClient;
+import com.boat.model.custom.StatusAmount;
 import com.boat.service.ReservationService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,4 +56,20 @@ public class ReservationController {
     public Reservation updateReservation(@RequestBody Reservation reservation) {
         return reservationService.updateReservation(reservation);
     }
+        
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationsPeriod(dateOne,dateTwo);
+    }
+    
+    @GetMapping("/report-status")
+    public StatusAmount getReservationsStatusReport(){
+        return reservationService.getReservationsStatusReport();
+    }
+    
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationsReportClient(){
+        return reservationService.getTopClients();
+    }
+    
 }

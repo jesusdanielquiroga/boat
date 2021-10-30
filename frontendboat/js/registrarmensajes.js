@@ -15,8 +15,8 @@ function registrar() {
     if (validar()){
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            //url: "http://localhost:8081/api/Message/save",
-            url:"http://150.230.32.98:8081/api/Message/save",
+            url: "http://localhost:8081/api/Message/save",
+            //url:"http://150.230.32.98:8081/api/Message/save",
             
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -71,8 +71,8 @@ function activaNuevo(){
 function listarClient() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Client/all",
-        url:"http://150.230.32.98:8081/api/Client/all",
+        url: "http://localhost:8081/api/Client/all",
+        //url:"http://150.230.32.98:8081/api/Client/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -128,8 +128,8 @@ function armaListaClient(items) {
 function listarBoat() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Boat/all",
-        url:"http://150.230.32.98:8081/api/Boat/all",
+        url: "http://localhost:8081/api/Boat/all",
+        //url:"http://150.230.32.98:8081/api/Boat/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)

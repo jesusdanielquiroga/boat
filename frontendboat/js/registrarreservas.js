@@ -4,10 +4,10 @@ function registrar() {
 
     //crea un objeto javascript
     let datos={
-        startDate: $("#startdate").val(),
-        devolutionDate: $("#devolutiondate").val(),
+        startDate: $("#startDate").val(),
+        devolutionDate: $("#devolutionDate").val(),
         boat:{"id": $("#boat").val()},
-        client:{"idClient": $("#client").val()}   
+        client:{"idClient": $("#client").val()}                 
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -16,8 +16,8 @@ function registrar() {
     if (validar()){
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            //url: "http://localhost:8081/api/Reservation/save",
-            url:"http://150.230.32.98:8081/api/Reservation/save",
+            url: "http://localhost:8081/api/Reservation/save",
+            //url:"http://150.230.32.98:8081/api/Reservation/save",
             
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
@@ -72,8 +72,8 @@ function activaNuevo(){
 function listarClient() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Client/all",
-        url:"http://150.230.32.98:8081/api/Client/all",
+        url: "http://localhost:8081/api/Client/all",
+        //url:"http://150.230.32.98:8081/api/Client/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -129,8 +129,8 @@ function armaListaClient(items) {
 function listarBoat() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-       // url: "http://localhost:8081/api/Boat/all",
-        url:"http://150.230.32.98:8081/api/Boat/all",
+        url: "http://localhost:8081/api/Boat/all",
+        //url:"http://150.230.32.98:8081/api/Boat/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)

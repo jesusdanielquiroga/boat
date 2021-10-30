@@ -12,6 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/listarcategoria.js"></script>
     <script src="js/registrarcategoria.js"></script>
+    <script src="js/borrarcategorias.js"></script>
+    <script src="js/editarcategorias.js"></script>
     <script src="js/funcionescategoria.js"></script>
 </head>
 
@@ -33,14 +35,22 @@
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
             <h3>Register Category</h3>
-            <input type="text" id="name" placeholder="name">
+            <input type="text" id="name" placeholder="Name" onkeydown="upperCaseF(this)">
             <br>
-            <textarea id="description" placeholder="description" rows="4" cols="50"></textarea>
+            <textarea id="description" placeholder="description" rows="4" cols="50" onkeydown="upperCaseF(this)"></textarea>
             <br>
             <button onclick="registrar();">Save</button>
             <button onclick="estadoInicial();">Cancel</button>
         </div>
-
+        <!-- Seccion para confirmar eliminaciòn de registros-->
+        <div id="eliminar">
+            <h3 id="titleIdDelete"></h3>
+            <input type="number" id="idDelete" placeholder="id">
+            <p id="categoryDelete"></p>
+            <br>
+            <button onclick="borrarRegistro(idDelete.value);">Aceptar</button>
+            <button onclick="estadoInicial();">Cancelar</button>
+        </div>
 
         <!-- Seccion para editar registros-->
         <div id="editar">

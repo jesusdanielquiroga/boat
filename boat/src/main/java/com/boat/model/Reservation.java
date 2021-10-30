@@ -31,20 +31,21 @@ public class Reservation implements Serializable {
     private Date startDate;
     @Column(nullable = false)
     private Date devolutionDate;
-
     @Column(nullable = false, length = 255)
-    private String status = "created";
-
+    private String status="created";
+        
     @ManyToOne
     @JoinColumn(name = "boatId")
     @JsonIgnoreProperties("reservations")
     private Boat boat;
+   
 
     @ManyToOne
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
+   
     @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "reservation")
     @JsonIgnoreProperties("reservation")
     private Score score;

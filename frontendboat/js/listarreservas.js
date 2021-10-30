@@ -13,8 +13,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://localhost:8081/api/Reservation/all",
-        url:"http://150.230.32.98:8081/api/Reservation/all", 
+        url: "http://localhost:8081/api/Reservation/all",
+        //url:"http://150.230.32.98:8081/api/Reservation/all", 
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -76,14 +76,16 @@ function listarRespuesta(items) {
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
+        var texto = `Fecha inicio: ${items[i].startDate}</br>Fecha Fin: ${items[i].devolutionDate}</br>Cliente: ${items[i].client.name}</br>Bote: ${items[i].boat.name}`;
         tabla +=`<tr>
                    <td>${items[i].startDate}</td>
                    <td>${items[i].devolutionDate}</td>
                    <td>${items[i].client.name}</td>
                    <td>${items[i].boat.name}</td>
-                   <td><button onclick="mostrarmensaje()">Edit</button></td>
-                   <td><button onclick="mostrarmensaje()">Delete</button></td>
+                   <td><button onclick=editarRegistro(${items[i].idReservation})>Edit</button></td>
+                   <td><button onclick="mostrarEliminar(${items[i].idReservation},'${texto}')">Delete</button></td>
                    </tr>`;
+        texto="";
     }
 
     //cierra tabla agregando el tag adecuado
@@ -99,10 +101,13 @@ function estadoInicial(){
     $("#editar").hide();
     $("#listado").show(500);
     $("#nuevoRegistro").show(500)
+    $("#eliminar").hide();
+    $("#idDelete").hide();
 
     //limpia el contenido de los campos del formulario nuevo
-    $("#startdate").val(""),
-    $("#devolutiondate").val("")
+    $("#id").val(""),
+    $("#messagetext").val("")
+    listar();
 }
 function mostrarmensaje(){
     alert("We're sorry. This function is under development ...")

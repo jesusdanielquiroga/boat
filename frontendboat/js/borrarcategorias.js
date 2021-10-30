@@ -1,13 +1,14 @@
-function mostrarEliminar(idClient,infClient){
+function mostrarEliminar(id,infCategory){
     $("#nuevo").hide();
     $("#editar").hide();
     $("#listado").hide();
     $("#nuevoRegistro").hide();
-    $("#titleIdDelete").html("Desea eliminar el cliente con el id: " + idClient + " ?...");    
-    $("#idDelete").val(idClient);
-    $("#clientDelete").html(infClient);
+    $("#titleIdDelete").html("Desea eliminar la categoria con el id: " + id + " ?...");    
+    $("#idDelete").val(id);
+    $("#categoryDelete").html(infCategory);
     $("#eliminar").show(1000);
 }
+
 
 /*
     Esta función recibe como parametro el id del registro a eliminar,
@@ -17,7 +18,7 @@ function mostrarEliminar(idClient,infClient){
 function borrarRegistro(llaveRegistro) {
     //crea un objeto javascript
     let datos={
-        idClient: llaveRegistro
+        id: llaveRegistro
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -25,7 +26,7 @@ function borrarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8081/api/Client/" + llaveRegistro,
+        url: "http://localhost:8081/api/Category/" + llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)

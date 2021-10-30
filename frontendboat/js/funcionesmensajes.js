@@ -77,3 +77,8 @@ function validar(){
 
     return true;
 }
+function upperCaseF(campo) {
+    setTimeout(function () {
+        campo.value = campo.value.toUpperCase();
+    }, 1);
+}
